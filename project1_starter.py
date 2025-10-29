@@ -1,7 +1,7 @@
 """
 COMP 163 - Project 1: Character Creator & Saving/Loading
-Name: [Your Name Here]
-Date: [Date]
+Name: Kelvin Quaicoe ]
+Date: [10/29/25]
 
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
@@ -9,16 +9,23 @@ Example: AI helped with file I/O error handling logic in save_character function
 
 def create_character(name, character_class):
     """
-    Creates a new character dictionary with calculated stats
-    Returns: dictionary with keys: name, class, level, strength, magic, health, gold
-    
-    Example:
-    char = create_character("Aria", "Mage")
-    # Should return: {"name": "Aria", "class": "Mage", "level": 1, "strength": 5, "magic": 15, "health": 80, "gold": 100}
+    Creates a new character with initial stats
+    Returns: character dictionary
     """
-    # TODO: Implement this function
-    # Remember to use calculate_stats() function for stat calculation
-    pass
+  
+    strength, magic, health = calculate_stats(character_class, 1)
+    
+    character_dict = {
+        "name": name,  
+        "class": character_class, 
+        "level": 1,
+        "strength": strength, 
+        "magic": magic, 
+        "health": health, 
+        "gold": 100 
+    }
+    
+    return character_dict
 
 def calculate_stats(character_class, level):
     """
