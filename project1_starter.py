@@ -135,21 +135,50 @@ def display_character(character):
 
 def level_up(character):
     """
-    Increases character level and recalculates stats
-    Modifies the character dictionary directly
-    Returns: None
+    Displays character information in a formatted way
     """
-    # TODO: Implement this function
-    # Remember to recalculate stats for the new level
-    pass
+    print("=== CHARACTER SHEET ===")
+    print(f"Name: {character['name']}")
+    print(f"Class: {character['class']}")
+    print(f"Level: {character['level']}")
+    print(f"Strength: {character['strength']}")
+    print(f"Magic: {character['magic']}")
+    print(f"Health: {character['health']}")
+    print(f"Gold: {character['gold']}")
+    print("=" * 23)
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":
-    print("=== CHARACTER CREATOR ===")
-    print("Test your functions here!")
+    print("=== RPG Character System ===\n")
     
-    # Example usage:
-    # char = create_character("TestHero", "Warrior")
-    # display_character(char)
-    # save_character(char, "my_character.txt")
-    # loaded = load_character("my_character.txt")
+    # Create a new character
+    hero = create_character("Aragorn", "Warrior")
+    display_character(hero)
+    
+    # Save character
+    print("\nSaving character...")
+    save_character(hero, "aragorn.txt")
+    
+    # Level up the character
+    level_up(hero)
+    display_character(hero)
+    
+    # Save updated character
+    save_character(hero, "aragorn.txt")
+    
+    # Load character from file
+    print("\nLoading character from file...")
+    loaded_hero = load_character("aragorn.txt")
+    if loaded_hero:
+        display_character(loaded_hero)
+    
+    # Test with different classes
+    print("\n=== Testing Different Classes ===\n")
+    mage = create_character("Gandalf", "Mage")
+    display_character(mage)
+    
+    rogue = create_character("Bilbo", "Rogue")
+    display_character(rogue)
+    
+    cleric = create_character("Elrond", "Cleric")
+    display_character(cleric)
