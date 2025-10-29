@@ -80,9 +80,40 @@ def load_character(filename):
     Loads character from text file
     Returns: character dictionary if successful, None if file not found
     """
-    # TODO: Implement this function
-    # Remember to handle file not found errors
-    pass
+    try:
+        file = open(filename, 'r')
+        lines = file.readlines()
+        file.close()
+        
+        # Parse the file content
+        character = {}
+        for line in lines:
+            line = line.strip()
+            if line.startswith("Character Name:"):
+                character['name'] = line.split(": ", 1)[1]
+            elif line.startswith("Class:"):
+                character['class'] = line.split(": ", 1)[1]
+            elif line.startswith("Level:"):
+                character['level'] = int(line.split(": ", 1)[1])
+            elif line.startswith("Strength:"):
+                character['strength'] = int(line.split(": ", 1)[1])
+            elif line.startswith("Magic:"):
+                character['magic'] = int(line.split(": ", 1)[1])
+            elif line.startswith("Health:"):
+                character['health'] = int(line.split(": ", 1)[1])
+            elif line.startswith("Gold:"):
+                character['gold'] = int(line.split(": ", 1)[1])
+        
+        return character
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")
+        return None
+    except Exception as e:
+        print(f"Error loading character: {e}")
+        return None
+
+
+
 
 def display_character(character):
     """
