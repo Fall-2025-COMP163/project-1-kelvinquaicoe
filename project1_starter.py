@@ -9,9 +9,17 @@ Example: AI helped with file I/O error handling logic in save_character function
 
 def create_character(name, character_class):
     """
-    Creates a new character with initial stats
-    Returns: character dictionary
+    Displays character information in a formatted way
     """
+    print("=== CHARACTER SHEET ===")
+    print(f"Name: {character['name']}")
+    print(f"Class: {character['class']}")
+    print(f"Level: {character['level']}")
+    print(f"Strength: {character['strength']}")
+    print(f"Magic: {character['magic']}")
+    print(f"Health: {character['health']}")
+    print(f"Gold: {character['gold']}")
+    print("=" * 23)
   
     strength, magic, health = calculate_stats(character_class, 1)
     
