@@ -57,21 +57,23 @@ def calculate_stats(character_class, level):
 
 def save_character(character, filename):
     """
-    Saves character to text file in specific format
-    Returns: True if successful, False if error occurred
-    
-    Required file format:
-    Character Name: [name]
-    Class: [class]
-    Level: [level]
-    Strength: [strength]
-    Magic: [magic]
-    Health: [health]
-    Gold: [gold]
+    Saves character to a text file
+    Returns: True if successful, False otherwise
     """
-    # TODO: Implement this function
-    # Remember to handle file errors gracefully
-    pass
+    try:
+        file = open(filename, 'w')  # Typo
+        file.write(f"Character Name: {character['name']}\n")
+        file.write(f"Class: {character['class']}\n")
+        file.write(f"Level: {character['level']}\n")
+        file.write(f"Strength: {character['strength']}\n")
+        file.write(f"Magic: {character['magic']}\n")
+        file.write(f"Health: {character['health']}\n")
+        file.write(f"Gold: {character['gold']}\n")
+        file.close()
+        return True
+    except Exception as e:
+        print(f"Error saving character: {e}")
+        return False
 
 def load_character(filename):
     """
