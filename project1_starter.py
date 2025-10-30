@@ -68,20 +68,16 @@ def save_character(character, filename):
     Saves character to a text file
     Returns: True if successful, False otherwise
     """
-    try:
-        file = open(filename, 'w')  # Typo
-        file.write(f"Character Name: {character['name']}\n")
-        file.write(f"Class: {character['class']}\n")
-        file.write(f"Level: {character['level']}\n")
-        file.write(f"Strength: {character['strength']}\n")
-        file.write(f"Magic: {character['magic']}\n")
-        file.write(f"Health: {character['health']}\n")
-        file.write(f"Gold: {character['gold']}\n")
-        file.close()
-        return True
-    except Exception as e:
-        print(f"Error saving character: {e}")
-        return False
+    file = open(filename, 'w')
+    file.write(f"Character Name: {character['name']}\n")
+    file.write(f"Class: {character['class']}\n")
+    file.write(f"Level: {character['level']}\n")
+    file.write(f"Strength: {character['strength']}\n")
+    file.write(f"Magic: {character['magic']}\n")
+    file.write(f"Health: {character['health']}\n")
+    file.write(f"Gold: {character['gold']}\n")
+    file.close()
+    return True
 
 def load_character(filename):
     """
