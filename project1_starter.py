@@ -30,6 +30,10 @@ def calculate_stats(character_class, level):
     """
     Calculates character stats based on class and level
     Returns: tuple of (strength, magic, health)
+    Mage== low strength, high magic growth, decent health
+    Warrior== very strong, lower magic, moderate health growth
+    Cleric== balanced mix of strength and magic, slower health growth
+    Rogue== has a fast growth rate but start weaker than the other classes
     """
     if character_class == 'Mage':
         strength = 60 + (level * 1)
