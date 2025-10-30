@@ -48,9 +48,9 @@ def calculate_stats(character_class, level):
         magic = 100 + (level * 4)  ###leve*4l -> level * 4
         health = 80 + (level * 1)
     elif character_class == 'Rogue':
-        strength = 50 + (level * 4)
-        magic = 40 + (level * 4)
-        health = 90 + (level * 4)
+        strength = 30 + (level * 4)
+        magic = 30 + (level * 4)
+        health = 40 + (level * 4)
     else:
         strength = 30 + (level * 2)
         magic = 40 + (level * 3)
