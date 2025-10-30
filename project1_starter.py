@@ -1,12 +1,13 @@
 """
 COMP 163 - Project 1: Character Creator & Saving/Loading
-Name: Kelvin Quaicoe ]
+Name:[ Kelvin Quaicoe ]
 Date: [10/29/25]
 
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
 import os
+
 def create_character(name, character_class):
     """
     Displays character information in a formatted way
@@ -60,7 +61,6 @@ def save_character(character, filename):
     """
     directory = os.path.dirname(filename)
     if directory and not os.path.exists(directory):
-        print(f"Error: Directory '{directory}' does not exist.")
         return False
     with open(filename, 'w') as file:
         file.write(f"Character Name: {character['name']}\n")
@@ -70,7 +70,6 @@ def save_character(character, filename):
         file.write(f"Magic: {character['magic']}\n")
         file.write(f"Health: {character['health']}\n")
         file.write(f"Gold: {character['gold']}\n")
-        
     return True
 
 def load_character(filename):
@@ -80,29 +79,16 @@ def load_character(filename):
     """
     if not os.path.exists(filename):
         return None
-        
-    # Parse the file content
-    
-    with open(filename, 'r') as file:
-        lines = file.readlines()
     character = {}
-    for line in lines:
-        line = line.strip()
-        if line.startswith("Character Name:"):
-            character['name'] = line.split(": ", 1)[1]
-        elif line.startswith("Class:"):
-            character['class'] = line.split(": ", 1)[1]
-        elif line.startswith("Level:"):
-            character['level'] = int(line.split(": ", 1)[1])
-        elif line.startswith("Strength:"):
-            character['strength'] = int(line.split(": ", 1)[1])
-        elif line.startswith("Magic:"):
-            character['magic'] = int(line.split(": ", 1)[1])
-        elif line.startswith("Health:"):
-            character['health'] = int(line.split(": ", 1)[1])
-        elif line.startswith("Gold:"):
-            character['gold'] = int(line.split(": ", 1)[1])
-    
+    with open(filename, 'r') as file:
+        for line in file:
+            key, value = line.strip().split(": ")
+            if key in ["Level", "Strength", "Magic", "Health", "Gold"]:
+                character[key.lower()] = int(value)
+            elif key == "Character Name":
+                character["name"] = value
+            elif key == "Class":
+                character["class"] = value
     return character
 
 
@@ -121,7 +107,7 @@ def display_character(character):
     print("=" * 23)
 
 def level_up(character):
-     """
+    """
     Increases character level and recalculates stats
     Modifies the character dictionary directly
     Returns: None
