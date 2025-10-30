@@ -6,7 +6,7 @@ Date: [10/29/25]
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
-
+import os
 def create_character(name, character_class):
     """
     Displays character information in a formatted way
@@ -58,6 +58,10 @@ def save_character(character, filename):
     Saves character to a text file
     Returns: True if successful, False otherwise
     """
+    directory = os.path.dirname(filename)
+    if directory and not os.path.exists(directory):
+        print(f"Error: Directory '{directory}' does not exist.")
+        return False
     file = open(filename, 'w')
     file.write(f"Character Name: {character['name']}\n")
     file.write(f"Class: {character['class']}\n")
