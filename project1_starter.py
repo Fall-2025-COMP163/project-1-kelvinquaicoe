@@ -62,15 +62,15 @@ def save_character(character, filename):
     if directory and not os.path.exists(directory):
         print(f"Error: Directory '{directory}' does not exist.")
         return False
-    file = open(filename, 'w')
-    file.write(f"Character Name: {character['name']}\n")
-    file.write(f"Class: {character['class']}\n")
-    file.write(f"Level: {character['level']}\n")
-    file.write(f"Strength: {character['strength']}\n")
-    file.write(f"Magic: {character['magic']}\n")
-    file.write(f"Health: {character['health']}\n")
-    file.write(f"Gold: {character['gold']}\n")
-    file.close()
+    with open(filename, 'w') as file:
+        file.write(f"Character Name: {character['name']}\n")
+        file.write(f"Class: {character['class']}\n")
+        file.write(f"Level: {character['level']}\n")
+        file.write(f"Strength: {character['strength']}\n")
+        file.write(f"Magic: {character['magic']}\n")
+        file.write(f"Health: {character['health']}\n")
+        file.write(f"Gold: {character['gold']}\n")
+        
     return True
 
 def load_character(filename):
@@ -79,13 +79,12 @@ def load_character(filename):
     Returns: character dictionary if successful, None if file not found
     """
     if not os.path.exists(filename):
-        print(f"Error: File '{filename}' not found.")
         return None
-    file = open(filename, 'r')
-    lines = file.readlines()
-    file.close()
-    
+        
     # Parse the file content
+    
+    with open(filename, 'r') as file:
+        lines = file.readlines()
     character = {}
     for line in lines:
         line = line.strip()
@@ -122,18 +121,21 @@ def display_character(character):
     print("=" * 23)
 
 def level_up(character):
+     """
+    Increases character level and recalculates stats
+    Modifies the character dictionary directly
+    Returns: None
     """
-    Displays character information in a formatted way
-    """
-    print("=== CHARACTER SHEET ===")
-    print(f"Name: {character['name']}")
-    print(f"Class: {character['class']}")
-    print(f"Level: {character['level']}")
-    print(f"Strength: {character['strength']}")
-    print(f"Magic: {character['magic']}")
-    print(f"Health: {character['health']}")
-    print(f"Gold: {character['gold']}")
-    print("=" * 23)
+    character['level'] += 1
+    
+    # Recalculate stats for the new level
+    strength, magic, health = calculate_stats(character['class'], character['level'])
+    character['strength'] = strength
+    character['magic'] = magic
+    character['health'] = health
+    
+    print(f"\n🎉 {character['name']} leveled up to Level {character['level']}!")
+    print(f"New Stats - Strength: {strength}, Magic: {magic}, Health: {health}")
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":
