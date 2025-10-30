@@ -11,16 +11,6 @@ def create_character(name, character_class):
     """
     Displays character information in a formatted way
     """
-    print("=== CHARACTER SHEET ===")
-    print(f"Name: {character['name']}")
-    print(f"Class: {character['class']}")
-    print(f"Level: {character['level']}")
-    print(f"Strength: {character['strength']}")
-    print(f"Magic: {character['magic']}")
-    print(f"Health: {character['health']}")
-    print(f"Gold: {character['gold']}")
-    print("=" * 23)
-  
     strength, magic, health = calculate_stats(character_class, 1)
     
     character_dict = {
@@ -84,7 +74,7 @@ def load_character(filename):
     Loads character from text file
     Returns: character dictionary if successful, None if file not found
     """
-    ile = open(filename, 'r')
+    file = open(filename, 'r')
     lines = file.readlines()
     file.close()
     
@@ -125,8 +115,6 @@ def display_character(character):
     Health: 80
     Gold: 100
     """
-    # TODO: Implement this function
-    pass
 
 def level_up(character):
     """
