@@ -133,9 +133,6 @@ def level_up(character):
     character['strength'] = strength
     character['magic'] = magic
     character['health'] = health
-    
-    print(f"\n🎉 {character['name']} leveled up to Level {character['level']}!")
-    print(f"New Stats - Strength: {strength}, Magic: {magic}, Health: {health}")
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":
