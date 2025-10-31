@@ -27,9 +27,9 @@ def create_character(name, character_class):
         "strength": strength, 
         "magic": magic, 
         "health": health, 
-        "gold": 100 
+        "gold": 100 # all characters get a 100 gold at level one
     }
-    # stored 
+    # return the dictionary
     return character_dict
 
 def calculate_stats(character_class, level):
@@ -41,22 +41,28 @@ def calculate_stats(character_class, level):
     Cleric== balanced mix of strength and magic, slower health growth
     Rogue== has a fast growth rate but start weaker than the other classes
     """
+    # Mage: weak physical power, strong magical growth, moderate health
     if character_class == 'Mage':
         strength = 60 + (level * 1)
         magic = 100 + (level * 5)
         health = 70 + (level * 3)
+    # Warrior: strong physical power, low magic, durable health
     elif character_class == 'Warrior':
         strength = 100 + (level * 5)
         magic = 20 + (level * 1)
         health = 90 + (level * 2)
+    # Cleric: balanced strength, high magic, slower health growth
     elif character_class == 'Cleric':
         strength = 30 + (level * 2)
         magic = 100 + (level * 4)
         health = 80 + (level * 1)
+    # Rogue: low starting stats but fast growth rate across all attributes
     elif character_class == 'Rogue':
         strength = 30 + (level * 4)
         magic = 30 + (level * 4)
         health = 40 + (level * 4)
+    # Default case for invalid classes (provides balanced stats)
+    # No print used—keeps function non-interactive
     else:
         #default stats as cant use print
         strength = 30 + (level * 2)
@@ -69,9 +75,12 @@ def save_character(character, filename):
     Saves character to a text file
     Returns: True if successful, False otherwise
     """
+    # Check if directory exists; if not, return False (prevents save error)
     directory = os.path.dirname(filename)
     if directory and not os.path.exists(directory):
         return False
+
+    # Write all character attributes to the file
     with open(filename, 'w') as file:
         file.write(f"Character Name: {character['name']}\n")
         file.write(f"Class: {character['class']}\n")
@@ -87,9 +96,11 @@ def load_character(filename):
     Loads character from text file
     Returns: character dictionary if successful, None if file not found
     """
+    # Verify that the specified file exists before attempting to read
     if not os.path.exists(filename):
         return None
     character = {}
+    # Read and parse each line to reconstruct the character dictionary
     with open(filename, 'r') as file:
         for line in file:
             key, value = line.strip().split(": ")
@@ -122,6 +133,7 @@ def level_up(character):
     Modifies the character dictionary directly
     Returns: None
     """
+    # Increase level
     character['level'] += 1
     
     # Recalculate stats for the new level
