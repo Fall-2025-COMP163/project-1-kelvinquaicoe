@@ -97,3 +97,55 @@ Modifying protected files will result in automatic academic integrity violation
 Implementation (70%): Function correctness, file operations, error handling
 
 Interview (30%): Code explanation and live coding challenge
+
+
+## Read Me Update
+Course: COMP 163
+Project 1: Character Creator & Saving/Loading
+Author: Kelvin Quaicoe
+Date: 10/29/25
+
+# Game Concept:
+This project is a text based game.
+It creates and manages a character by taking in name and class (Mage, warrior, rogue, Clerc)
+Class chosen determines your base stats.
+
+# Design Choices
+Based on the class chosen the characters get diffent base stats.
+Warrior: High strength and rapid Strength growth rate, low magic, high health
+Mage: Low strength, high magic and rapid Magic growth rate, medium health
+Rogue: low base stats for everything.
+Cleric: Medium strength, high magic, high health
+
+#Formulae used
+base_strength = class_modifier + (level * growth_rate) 
+
+
+# Bonus Creative Features
+Rogue has a fast growth rate for all stats but starts with low overall statsencouraging loong term progression.
+
+# AI Usage
+AI provided assistance throughout the project in both the design and debugging stages. It was helpful in improving code readability by cleaning up indentation and spacing, as well as identifying unnecessary print() statements that were not required for functionality. AI also helped locate typos and diagnose logical and syntactical errors during debugging. In addition, it identified redundant or inefficient sections of code, leading to a cleaner and more optimized implementation. Finally, AI explained the use of os.path.dirname(), clarifying that it is used to extract the directory portion of a file path, which allows the program to verify the existence of a directory before saving files.
+
+# How to Run
+Save the program as character_creator.py in your project folder.
+
+Open a terminal or command prompt in the same directory where the file is saved.
+
+Run the program using the command:
+python character_creator.py
+
+The program will automatically:
+Create sample characters 
+Display each character’s stats in a formatted character sheet.
+Save and load character information from text files (e.g., aaron.txt).
+Demonstrate character leveling and stat updates.
+
+You can also modify the main section to create your own custom characters or test additional class types.
+
+After running, check your project folder to see the saved character files created by the program.
+
+
+
+
+
