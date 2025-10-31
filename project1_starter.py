@@ -4,7 +4,13 @@ Name:[ Kelvin Quaicoe ]
 Date: [10/29/25]
 
 AI Usage: [Document any AI assistance used]
-Example: AI helped with file I/O error handling logic in save_character function
+AI provided assistance throughout the project in both the design and debugging stages.
+Ai was helpfull in cleaning up indentation and spacing
+Ai aided in realizing print() functions were not needed
+Ai was used to find typos made
+It was used during debugging, AI support helped in diagnosing logical and syntactical errors
+It also helped identify areas of redundant or unnecessary
+Explain that "os.path.dirname" is used to extract a file path
 """
 import os
 
@@ -13,7 +19,7 @@ def create_character(name, character_class):
     Displays character information in a formatted way
     """
     strength, magic, health = calculate_stats(character_class, 1)
-    
+    # Create a dictionary to hold all character information (name, class, level, and initial attributes)
     character_dict = {
         "name": name,  
         "class": character_class, 
@@ -23,7 +29,7 @@ def create_character(name, character_class):
         "health": health, 
         "gold": 100 
     }
-    
+    # stored 
     return character_dict
 
 def calculate_stats(character_class, level):
