@@ -58,7 +58,10 @@ def calculate_stats(character_class, level):
         magic = 30 + (level * 4)
         health = 40 + (level * 4)
     else:
-        print(f"Invalid class '{character_class}'.\nPlease enter one of the following:  (Mage, Warrior, Cleric, or Rogue) ")
+        #default stats as cant use print
+        strength = 30 + (level * 2)
+        magic = 40 + (level * 3)
+        health = 50 + (level * 4)
     return (strength, magic, health)
 
 def save_character(character, filename):
